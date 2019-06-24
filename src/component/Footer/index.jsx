@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './index.less'
-class Home extends Component {
+class Footer extends Component {
     render() {
         return (
-            <div class='cd-home-box'>
-                主体部分
+            <div class='cd-footer'>
+                footer
             </div>
         );
     }
 }
 
-export default Home;
+export default Footer;
