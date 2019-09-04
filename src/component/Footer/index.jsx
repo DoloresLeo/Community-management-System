@@ -3,7 +3,7 @@ import './index.less'
 class Footer extends Component {
     render() {
         return (
-            <div class='cd-footer'>
+            <div className='cd-footer'>
                 footer
             </div>
         );

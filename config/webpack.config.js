@@ -133,6 +133,8 @@ module.exports = function(webpackEnv) {
       : isEnvDevelopment && 'cheap-module-source-map',
     // These are the "entry points" to our application.
     // This means they will be the "root" imports that are included in JS bundle.
+
+    //入口文件的配置项
     entry: [
       // Include an alternative client for WebpackDevServer. A client's job is to
       // connect to WebpackDevServer by a socket and get notified about changes.
@@ -152,12 +154,14 @@ module.exports = function(webpackEnv) {
       // initialization, it doesn't blow up the WebpackDevServer client, and
       // changing JS code would still trigger a refresh.
     ].filter(Boolean),
+
+    //出口文件的配置项，出口配置是为了告诉webpack最后打包文件的地址和文件名称
     output: {
-      // The build folder.
+      // 打包路径
       path: isEnvProduction ? paths.appBuild : undefined,
       // Add /* filename */ comments to generated require()s in the output.
       pathinfo: isEnvDevelopment,
-      // There will be one main bundle, and one file per asynchronous chunk.
+      // 打包的文件名称
       // In development, it does not produce real files.
       filename: isEnvProduction
         ? 'static/js/[name].[contenthash:8].js'
@@ -281,6 +285,7 @@ module.exports = function(webpackEnv) {
         'react-native': 'react-native-web',
         'container':path.resolve(paths.appSrc,'./container'),
         'component':path.resolve(paths.appSrc,'./component'),
+        'common':path.resolve(paths.appSrc,'./common')
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
@@ -301,6 +306,8 @@ module.exports = function(webpackEnv) {
         PnpWebpackPlugin.moduleLoader(module),
       ],
     },
+
+    //模块：例如解读CSS，图片如何转换，压缩
     module: {
       strictExportPresence: true,
       rules: [
@@ -508,6 +515,9 @@ module.exports = function(webpackEnv) {
         },
       ],
     },
+
+
+    //插件，用于生产模块和各项功能
     plugins: [
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
